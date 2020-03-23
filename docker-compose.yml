@@ -1,0 +1,16 @@
+  kafka:
+    image: "wurstmeister/kafka"
+    ports:
+     - "9092:9092"
+    links: 
+     - zookeeper
+    environment:
+     - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+     - KAFKA_ADVERTISED_PORT=9092
+     - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092
+     - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - "2181:2181"
